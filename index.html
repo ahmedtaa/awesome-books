@@ -6,10 +6,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Document</title>
+    <title>Awesome Books</title>
 </head>
 
 <body>
+    <header>
+        <h1>Awesome Books</h1>
+    </header>
+    <section id="view">
+        <article>
+            <p class="book-title">Lorem, ipsum.</p>
+            <p class="author">Lorem, ipsum dolor.</p>
+            <button class="remove" onclick="whatButton(this)">Remove</button>
+            <hr>
+        </article>
+
+        <article>
+            <p class="book-title">Lorem, ipsum.</p>
+            <p class="author">Lorem, swwswipsum dolor.</p>
+            <button class="remove" onclick="whatButton(this)">Remove</button>
+            <hr>
+        </article>
+    </section>
+    <section>
+        <article class="form">
+            <input required class="title-input" type="text" placeholder="Book title" id="title">
+            <input required class="author-input" type="text" placeholder="Book author" id="author">
+            <button onclick="add(this)">Add</button>
+        </article>
+    </section>
+
 
     <script src="./js/main.js"></script>
 </body>
