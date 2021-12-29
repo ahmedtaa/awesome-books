@@ -1,11 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('//db.onlinewebfonts.com/c/d14035f6b1afeabafbee4abb2ebf0fc6?family=COCOGOOSE');
+
+:root {
+  --dark-brown: #194350;
+  --brown: #9dbeb9;
+  --lite-brown: #9dbeb9cc;
+  --text: #ffffff;
+  --lato: lato, sans-serif;
+  --coco: cocogoose, sans-serif;
+}
+
 body {
-  padding: 50px 500px;
+  display: grid;
+  background-color: var(--dark-brown);
+  color: var(--text);
+  font-family: var(--coco);
+}
+
+#view {
+  display: grid;
+  gap: 2px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  max-width: 300px;
   gap: 10px;
   padding: 20px 0;
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 4px 0;
+  height: 70px;
+  background-color: var(--brown);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.title {
+  font-size: 20px;
+  margin: 0 20px;
+}
+
+.author {
+  font-family: var(--lato);
+  font-size: 14px;
+  margin: 0 30px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.title-input,
+.author-input,
+.add {
+  height: 50px;
+  border-style: none;
+}
+
+.add {
+  background-color: var(--brown);
+  color: var(--text);
+}
+
+.title-input,
+.author-input {
+  font-family: var(--coco);
+  background-color: var(--lite-brown);
+}
+
+.remove {
+  color: var(--text);
+}
+
+.close {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--lite-brown);
+  height: 70px;
+  padding: 4px 20px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--text);
+  opacity: 1; /* Firefox */
+  padding: 0 20px;
 }

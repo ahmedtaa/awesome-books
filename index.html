@@ -11,33 +11,39 @@
 
 <body>
     <header>
-        <h1>Awesome Books</h1>
+        <h1>All Awesome Books</h1>
     </header>
     <section id="view">
-        <article>
-            <p class="book-title">Lorem, ipsum.</p>
-            <p class="author">Lorem, ipsum dolor.</p>
-            <button class="remove" onclick="whatButton(this)">Remove</button>
-            <hr>
+        <article class="row">
+            <div class="book">
+                <p class="title">programming for dummies </p>
+                <p class="author">by Someone</p>
+            </div>
+            <div class="close">
+                <a class="remove" onclick="remove(this)" href="#"><i class="fas fa-window-close fa-2x"></i></a>
+            </div>
         </article>
-
-        <article>
-            <p class="book-title">Lorem, ipsum.</p>
-            <p class="author">Lorem, swwswipsum dolor.</p>
-            <button class="remove" onclick="whatButton(this)">Remove</button>
-            <hr>
+        <article class="row">
+            <div class="book">
+                <p class="title">Alfreds </p>
+                <p class="author">by Futterkiste</p>
+            </div>
+            <div class="close">
+                <a class="remove" onclick="remove(this)" href="#"><i class="fas fa-window-close fa-2x"></i></a>
+            </div>
         </article>
     </section>
     <section>
         <article class="form">
             <input required class="title-input" type="text" placeholder="Book title" id="title">
             <input required class="author-input" type="text" placeholder="Book author" id="author">
-            <button onclick="add(this)">Add</button>
+            <button class="add" onclick="add(this)"><i class="fas fa-plus-square fa-3x"></i></button>
         </article>
     </section>
 
 
     <script src="./js/main.js"></script>
+    <script src="https://kit.fontawesome.com/fe6dec7cca.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

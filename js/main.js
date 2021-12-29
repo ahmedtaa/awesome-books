@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
-function whatButton(button) {
-  button.parentElement.parentElement.removeChild(button.parentElement);
+function remove(button) {
+  const b = button.parentElement.parentElement;
+  b.parentElement.removeChild(b);
 }
 // loader
 function add(addButton) {
@@ -10,12 +11,15 @@ function add(addButton) {
     document.getElementById('title').value = '';
     document.getElementById('author').value = '';
     const article = document.createElement('article');
+    article.classList.add('row');
     article.innerHTML = `
-  
-            <p class="book-title">${title}</p>
-             <p class="author">${author}</p>
-             <button class="remove" onclick="whatButton(this)">Remove</button>
-             <hr>
+           <div class="book">
+                <p class="title"> ${title} </p>
+                <p class="author">by ${author} </p>
+            </div>
+            <div class="close">
+                <a class="remove" onclick="remove(this)" href="#"><i class="fas fa-window-close fa-2x"></i></a>
+            </div>
     `;
     document.getElementById('view').append(article);
   } else {
