@@ -1,3 +1,5 @@
+// class Books
+
 // the book collection
 let books = [];
 localStorage.setItem('books', JSON.stringify(books));
