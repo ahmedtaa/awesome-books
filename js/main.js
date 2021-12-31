@@ -1,25 +1,27 @@
 // class Books
+class Book {
+  constructor(title = null, author = null) {
+    this.title = title;
+    this.author = author;
+    // the book collection
+  }
 
-// the book collection
-let books = [];
-localStorage.setItem('books', JSON.stringify(books));
+  addToBookCollection() {
+    const books = JSON.parse(localStorage.getItem('books'));
+    const bookObj = {};
+    bookObj.title = this.title;
+    bookObj.author = this.author;
+    books.push(bookObj);
+    localStorage.setItem('books', JSON.stringify(books));
+  }
 
-// add a Book fn
-function addToBookCollection(title, author) {
-  books = JSON.parse(localStorage.getItem('books'));
-  const book = {};
-  book.title = title;
-  book.author = author;
-  books.push(book);
-  localStorage.setItem('books', JSON.stringify(books));
-}
-
-// loader
-function loader() {
-  document.getElementById('view').innerHTML = '';
-  let article = '';
-  books.forEach((book) => {
-    article += `
+  // loader
+  loader = () => {
+    const books = JSON.parse(localStorage.getItem('books'));
+    document.getElementById('view').innerHTML = '';
+    let article = '';
+    books.forEach((book) => {
+      article += `
             <article>
              <p class="book-title">${book.title}</p>
              <p class="author">${book.author}</p>
@@ -27,22 +29,25 @@ function loader() {
              <hr>
               </article>
     `;
-  });
-  document.getElementById('view').innerHTML = article;
+    });
+    document.getElementById('view').innerHTML = article;
+  };
+
+  // remove a Book fn
+  removeFromBookCollection() {
+    let books = JSON.parse(localStorage.getItem('books'));
+    books = books.filter((e) => e.title !== this.title);
+    localStorage.setItem('books', JSON.stringify(books));
+    this.loader();
+  }
 }
 
-// remove a Book fn
-function removeFromBookCollection(title) {
-  books = JSON.parse(localStorage.getItem('books'));
-  books = books.filter((e) => e.title !== title);
-  localStorage.setItem('books', JSON.stringify(books));
-  loader();
-}
+new Book().loader();
 
 /* eslint-disable no-unused-vars */
 function whatButton(button) {
-  const titleToBeDeleted = button.parentElement.children[0].innerHTML;
-  removeFromBookCollection(titleToBeDeleted);
+  const book = new Book(button.parentElement.children[0].innerHTML);
+  book.removeFromBookCollection();
 }
 
 // oldcode
@@ -53,8 +58,9 @@ function add() {
   if (title !== '' && author !== '') {
     document.getElementById('title').value = '';
     document.getElementById('author').value = '';
-    addToBookCollection(title, author);
-    loader();
+    const book = new Book(title, author);
+    book.addToBookCollection();
+    book.loader();
   } else {
     // implement a validation message
   }
