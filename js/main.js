@@ -23,17 +23,16 @@ class Book {
     books.forEach((book) => {
       article += `
             <div class="book">
-                <p class="title"> ${title} </p>
-                <p class="author">by ${author} </p>
+                <p class="title"> ${book.title} </p>
+                <p class="author">by ${book.author} </p>
             </div>
             <div class="close">
                 <a class="remove" onclick="remove(this)" href="#"><i class="fas fa-window-close fa-2x"></i></a>
             </div>
     `;
-      document.getElementById('view').append(article);
-   
+    });
+    document.getElementById('view').innerHTML = article;
   };
-  
 
   // remove a Book fn
   removeFromBookCollection() {
@@ -50,7 +49,6 @@ new Book().loader();
 function whatButton(button) {
   const book = new Book(button.parentElement.children[0].innerHTML);
   book.removeFromBookCollection();
-
 }
 
 // oldcode
