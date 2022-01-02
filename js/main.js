@@ -7,7 +7,7 @@ class Book {
   }
 
   addToBookCollection() {
-    const books = JSON.parse(localStorage.getItem('books'));
+    const books = JSON.parse(localStorage.getItem('books')) || [];
     const bookObj = {};
     bookObj.title = this.title;
     bookObj.author = this.author;
@@ -17,11 +17,12 @@ class Book {
 
   // loader
   loader = () => {
-    const books = JSON.parse(localStorage.getItem('books'));
+    const books = JSON.parse(localStorage.getItem('books')) || [];
     document.getElementById('view').innerHTML = '';
     let article = '';
     books.forEach((book) => {
       article += `
+      <article class="row">
             <div class="book">
                 <p class="title"> ${book.title} </p>
                 <p class="author">by ${book.author} </p>
@@ -29,6 +30,7 @@ class Book {
             <div class="close">
                 <a class="remove" onclick="remove(this)" href="#"><i class="fas fa-window-close fa-2x"></i></a>
             </div>
+            </article>
     `;
     });
     document.getElementById('view').innerHTML = article;
@@ -37,7 +39,7 @@ class Book {
   // remove a Book fn
   removeFromBookCollection() {
     let books = JSON.parse(localStorage.getItem('books'));
-    books = books.filter((e) => e.title !== this.title);
+    books = books.filter((book) => book.title.trim() !== this.title.trim());
     localStorage.setItem('books', JSON.stringify(books));
     this.loader();
   }
@@ -46,8 +48,10 @@ class Book {
 new Book().loader();
 
 /* eslint-disable no-unused-vars */
-function whatButton(button) {
-  const book = new Book(button.parentElement.children[0].innerHTML);
+function remove(button) {
+  const parent = button.parentElement.parentElement;
+  const title = parent.children[0].children[0].innerHTML;
+  const book = new Book(title);
   book.removeFromBookCollection();
 }
 
