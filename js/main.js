@@ -3,6 +3,8 @@ let books;
 // loader
 function loader() {
   document.getElementById('view').innerHTML = '';
+  const warning = document.querySelector('.warning');
+  warning.style.visibility = 'hidden';
   let article = '';
   books.forEach((book) => {
     article += `
@@ -59,6 +61,7 @@ function add() {
     addToBookCollection(title, author);
     loader();
   } else {
-    // implement a validation message
+    const warning = document.querySelector('.warning');
+    warning.style.visibility = 'visible';
   }
 }

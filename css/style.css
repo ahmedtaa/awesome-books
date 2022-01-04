@@ -9,3 +9,10 @@ body {
   gap: 10px;
   padding: 20px 0;
 }
+
+.warning {
+  visibility: hidden;
+  color: red;
+  margin: 0;
+  padding: 0;
+}
