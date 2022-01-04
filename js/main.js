@@ -22,7 +22,7 @@ class Book {
     let article = '';
     books.forEach((book) => {
       article += `
-      <article class="row">
+          <article class="row">
             <div class="book">
                 <p class="title"> ${book.title} </p>
                 <p class="author">by ${book.author} </p>
@@ -30,7 +30,7 @@ class Book {
             <div class="close">
                 <a class="remove" onclick="remove(this)" href="#"><i class="fas fa-window-close fa-2x"></i></a>
             </div>
-            </article>
+          </article>
     `;
     });
     document.getElementById('view').innerHTML = article;
