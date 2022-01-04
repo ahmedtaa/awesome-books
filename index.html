@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Awesome Books</title>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Document</title>
-</head>
-
-<body>
+  <body>
+    <header>
+      <h1>Awesome Books</h1>
+    </header>
+    <section id="view"></section>
+    <section>
+      <article class="form">
+        <input required class="title-input" type="text" placeholder="Book title" id="title" />
+        <input required class="author-input" type="text" placeholder="Book author" id="author" />
+        <p class="warning">Title and author can not be blank</p>
+        <button onclick="add(this)">Add</button>
+      </article>
+    </section>
 
     <script src="./js/main.js"></script>
-</body>
-
+  </body>
 </html>
