@@ -1,7 +1,6 @@
-let books;
-
 // loader
 function loader() {
+  const books = JSON.parse(localStorage.getItem('books'));
   document.getElementById('view').innerHTML = '';
   const warning = document.querySelector('.warning');
   warning.style.visibility = 'hidden';
@@ -19,16 +18,16 @@ function loader() {
   document.getElementById('view').innerHTML = article;
 }
 
-if (books === []) {
+if (localStorage.getItem('books') === undefined) {
+  const books = [];
   localStorage.setItem('books', JSON.stringify(books));
 } else {
-  books = JSON.parse(localStorage.getItem('books'));
   loader();
 }
 
 // add a Book fn
 function addToBookCollection(title, author) {
-  books = JSON.parse(localStorage.getItem('books'));
+  const books = JSON.parse(localStorage.getItem('books'));
   const book = {};
   book.title = title;
   book.author = author;
@@ -38,7 +37,7 @@ function addToBookCollection(title, author) {
 
 // remove a Book fn
 function removeFromBookCollection(title) {
-  books = JSON.parse(localStorage.getItem('books'));
+  let books = JSON.parse(localStorage.getItem('books'));
   books = books.filter((e) => e.title !== title);
   localStorage.setItem('books', JSON.stringify(books));
   loader();
